@@ -13,6 +13,7 @@ import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '@angular/common/http';
 import { ListsPage } from '../pages/lists/lists';
 import { CreateListPage } from '../pages/create-list/create-list';
+import { ItemsPage } from '../pages/items/items';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CreateListPage } from '../pages/create-list/create-list';
     RegisterPage,
     ListsPage,
     CreateListPage,
+    ItemsPage,
       ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { CreateListPage } from '../pages/create-list/create-list';
     RegisterPage,
     ListsPage,
     CreateListPage,
+    ItemsPage,
       ],
   providers: [
     StatusBar,

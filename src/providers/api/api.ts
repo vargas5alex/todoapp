@@ -28,6 +28,27 @@ export class ApiProvider {
       }
     });
 }
+public getItems(list): Observable<any> {
+  return this.http.get(`${this.url}/v1/list/${list.id}/item`, {
+    headers: {
+      'Authorization': this.token
+    }
+  });
+}
+public createItem(params, list): Observable<boolean> {
+  return this.http.post(`${this.url}/v1/list/${list.id}/item`, {
+    item: params
+  }, {
+    headers: {
+      'Authorization': this.token
+    }
+  }).pipe(map((response: any) => {
+    return true;
+  }), catchError((error: HttpErrorResponse) => {
+    return Observable.of(false);
+  }))
+}
+
 public createList(params): Observable<boolean> {
   return this.http.post(`${this.url}/v1/list`, {
     list: params
@@ -55,6 +76,21 @@ public createList(params): Observable<boolean> {
     }), catchError((error: HttpErrorResponse) => {
       return Observable.of(false);
     }))
+  }
+  public finishItem(item, list): Observable<boolean> {
+    return this.http.patch(`${this.url}/v1/list/${list.id}/item/${item.id}`, {
+      item: {
+        status: true
+      }
+    }, {
+      headers: {
+        'Authorization': this.token
+      }
+    }).pipe(map((response: any) => {
+      return true;
+    }), catchError((error: HttpErrorResponse) => {
+      return Observable.of(false);
+    }));
   }
 
   public register(params): Observable<boolean> {

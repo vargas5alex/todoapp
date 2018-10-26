@@ -3,6 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { CreateListPage } from '../create-list/create-list';
 import { LoginPage } from '../login/login';
+import { ItemsPage } from '../items/items';
 
 /**
  * Generated class for the ListsPage page.
@@ -39,5 +40,11 @@ export class ListsPage {
     modal.onDidDismiss(() => {
       this.refreshLists();
     });
+  }
+  public goToList(list: any): void {
+    this.navCtrl.push(ItemsPage, {
+      list: list
+    });
+  
   }
 }
